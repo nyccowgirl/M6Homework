@@ -1,0 +1,233 @@
+Question 1 - T(n):
+
+Code A:
+    int sum = 0;                            +1
+
+    for(int i=0; i<n; i++) {                3n+2
+       sum++;                               2n
+    }
+
+    => 5n + 3
+
+Code B:
+    int sum = 0;                            +1
+
+    for(int i=0; i<n; i++) {                3n+2
+       if(i meets some condition) {         n
+          sum += i;                         2n
+       }
+    }
+
+    => 6n + 3
+
+Question 2 - Big O:
+
+Code A:
+    int sum=0;
+
+    for(int i=1; i<n; i++)  {
+       for(int j=0; j<n; j++) {
+          if(some condition) {
+             for(int k=1; k<n; k++) {
+                sum++;
+             }
+          }
+       }
+    }
+
+    => O(n^3)
+
+Code B:
+    int sum=0;
+
+    for(int i=1; i<n; i++)  {
+       sum++;
+       for(int j=0; j<n; j++) {
+          sum++;
+       }
+    }
+
+    => O(n^2)
+
+Code C:
+    for(int i=0; i<n; i++) {
+       for(int j=0; j<10; j++) {
+          for(int k=0; k<n; k++) {
+             // code that is independent of n
+          }
+       }
+    }
+
+    => O(n^2)
+
+Code D:
+    for(int i=0; i<n; i++) {
+       // code that is independent of n
+    }
+    for(int j=0; j<10; j++) {
+       // code that is O(n)
+    }
+
+    => O(n)
+
+Code E:
+    for(int i=0; i<array.length/2; i++) {
+       int temp = array[i];
+       array[i] = array[array.length - i - 1];
+       array[array.length - i - 1] = temp;
+    }
+
+    => O(n)
+
+Question 3 - Big O:
+
+a. Code inside ArrayBag and LinkedBag
+
+    for every element in the bag // for loop dependent on numberOfEntries
+
+        add(double that element) //add(T) method
+
+    => ArrayBag O(n); LinkedBag O(n)
+
+b. Code inside ArrayBag and LinkedBag
+
+    for every element in the bag // for loop dependent on numberOfEntries
+
+        remove()
+
+    => ArrayBag O(n); LinkedBag O(n)
+
+c. Code inside ArrayBag and LinkedBag
+
+    for every element in the bag // for loop dependent on numberOfEntries
+
+        if the element meets some criteria
+
+            remove(the element) // remove(T) method
+
+    => ArrayBag O(n^2); LinkedBag O(n^2)
+
+d. Code written outside the classes (like in main) that uses an ArrayBag and LinkedBag
+
+    for the numbers from 1 to 10
+
+        print if the bag/list contains the number // calls the contains(T) method
+
+    => ArrayBag O(n); LinkedBag O(n)
+
+Question 4 - Big O:
+
+a. Code inside AList and LList:
+
+    for every element in the list// for loop dependent on numberOfEntries
+
+        remove(the element at that position) // uses the index from the loop and remove(int) method
+
+    => AList O(n^2); LList O(n^2)
+
+b. Code inside AList and LList:
+
+    for every element in the array // for loop dependent on numberOfEntries
+
+        remove(the element) // uses the index from the loop and the remove(T) method
+
+    => AList O(n); LList O(n)
+
+c. Code that uses AList and LList:
+
+    for five randomly selected numbers in the proper range
+
+        print the element at that position in the list // uses the getEntry(int) method
+
+    => AList O(1); LList O(n)
+
+d. Code written outside the classes (like in main) that uses an AList and LList
+
+    for the numbers from 1 to 10
+
+        print if the bag/list contains the number // calls the contains(T) method
+
+    => AList O(n); LList O(n)
+
+Question 5:
+
+List one method that is O(1) for both ArrayList and LinkedList.
+    => add
+
+List one method that is O(n) for both ArrayList and LinkedList.
+    => contains
+
+List one method that has a different efficiency for ArrayList and LinkedList.
+    => getEntry
+
+Question 6:
+
+You are given an array of length n that contains unique integers in random order in the range 1 to n+1.
+
+For example, an array of length 5 contains 5 unique integers from the set 1-6. So the array might be 3, 6, 5, 1, 4
+(does not contain 2) or 2, 1, 6, 3, 5 (does not contain 4).
+
+Write linear O(n)  code to find the integer that is missing from the set.
+
+    int missing;
+
+    Arrays.sort(array)          // O(n log n)
+
+    for (int i = 0; i < 6; i++) {   // O(n)
+        if ((i + 1) != array[i])
+            missing = array[i]
+    }
+
+Question 7:
+
+Write linear O(n) code to fill an array of size n with unique random numbers in the range 0-5n (inclusive).
+
+    import java.util.Random
+
+    Random rand = new Random();
+
+    int[] array = new int[n];
+
+    for (int i = 0; i < n; i++) {       // O(n)
+        array[i] = rand.nextInt((5 * n) + 1);
+    }
+
+Question 8:
+
+You are given an array of length n that contains positive and negative integers in random order. Write linear O(n)
+code that rearranges the integers so that the negative integers appear before the positive integers. Note the array
+is not sorted, just negatives before positives. You can assume 0 is not in the array.
+
+    int pivotIndex = 0;
+    int lastIndex = n - 1;
+
+    while (pivotIndex < lastIndex) {
+        if (array[pivotIndex] < 0) {
+            pivotIndex++;
+        } else if (array[lastIndex] < 0) {
+            swap(array, pivotIndex, lastIndex);
+            pivotIndex++;
+            lastIndex--;
+        } else {
+            lastIndex--;
+        }
+    }
+
+Question 9 - Estimating:
+
+What's the population of SF area? What percentage takes public transportation? How many can fit in a Bart train?
+What are peak times? How many lines would the Bart serve? How many stops and related time frames?
+
+Question 10:
+
+Recursion usually works well for a small data set but gets inefficient as the dataset gets bigger.
+
+Question 11:
+
+Efficiency with stacks vs. dequeues vs linked nodes
+
+Question 12:
+
+Imagine you have two random number generators, each producing a sequence of digits. The question for your computer
+is this: Are the two sequences completely independent from each other, or are they related in a hidden way (where one
+sequence is the “Fourier transform” of the other)?
