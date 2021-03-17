@@ -4,7 +4,7 @@ public class HomeworkM6Driver {
 
 	// I recommend changing these to smaller numbers to start with!
 	// Then once you think you have a good solution, you can increase them for more robust testing.
-	public static final int LIST_SIZE = 100;
+	public static final int LIST_SIZE = 1;
 	public static final int MINIMUM_SINGLE_DUPLICATES = 10; // minimum number of numbers on the list that will appear twice (have a "single duplicate")
 	public static final int MINIMUM_DOUBLE_DUPLICATES = 5;  // minimum number of numbers on the list that will appear three times (have a "duplicate duplicate")
 	
